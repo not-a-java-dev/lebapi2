@@ -50,6 +50,9 @@ app.get("/video/:vid", (req, res) => {
   res.sendFile(`${videosPath}/${vid}.mp4`, (err) => {if(err){console.error(`Error sending video: ${err.message}`);}});
 });
 
+app.get("/status",(rq,rs)=>{
+  rs.json({"amount":nVideos,"working":"maybe","videos":videos});
+});
 
 // quite simple health check
 app.get("/jollycheck",(req,res)=>{res.status(200).send("very jolly");});
